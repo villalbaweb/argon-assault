@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] float controlSpeed = 1f;
 
     // Update is called once per frame
     void Update()
     {
-        float horizontalThrow = Input.GetAxis("Horizontal");
-        float verticalThrow = Input.GetAxis("Vertical");
-        print($"horizontalThrow > {horizontalThrow}");
-        print($"verticalThrow > {verticalThrow}");
+        Move();
+    }
+
+    private void Move()
+    {
+        float xThrow = Input.GetAxis("Horizontal");
+        float yThrow = Input.GetAxis("Vertical");
+
+        float xOffset = xThrow * controlSpeed * Time.deltaTime;
+        float newXPos = transform.localPosition.x + xOffset;
+
+        float yOffset = yThrow * controlSpeed * Time.deltaTime;
+        float newYPos = transform.localPosition.y + yOffset;
+
+        transform.localPosition = new Vector3(newXPos, newYPos, transform.localPosition.z);
     }
 }
