@@ -231,6 +231,9 @@ MonoBehaviour:
   xRange: 13
   yRange: 7
   positionPitchFactor: -2
+  controlPitchFactor: -15
+  positionYawFactor: 2
+  controlRollFactor: -20
 --- !u!1 &3617991095575204990
 GameObject:
   m_ObjectHideFlags: 0
