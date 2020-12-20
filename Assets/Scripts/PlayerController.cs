@@ -9,6 +9,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float yRange = 7f;
 
     [SerializeField] float positionPitchFactor = -2f;
+    [SerializeField] float controlPitchFactor = -15f;
+
+
+    float xThrow;
+    float yThrow;
 
     // Update is called once per frame
     void Update()
@@ -19,8 +24,8 @@ public class PlayerController : MonoBehaviour
 
     private void ProcessTranslation()
     {
-        float xThrow = Input.GetAxis("Horizontal");
-        float yThrow = Input.GetAxis("Vertical");
+        xThrow = Input.GetAxis("Horizontal");
+        yThrow = Input.GetAxis("Vertical");
 
         float xOffset = xThrow * controlSpeed * Time.deltaTime;
         float rawXPos = transform.localPosition.x + xOffset;
@@ -35,7 +40,10 @@ public class PlayerController : MonoBehaviour
 
     private void ProcessRotation()
     {
-        float pitch = transform.localPosition.y * positionPitchFactor;
+        float pitchDueToPosition = transform.localPosition.y * positionPitchFactor;
+        float pitchDueToControlThrow = yThrow * controlPitchFactor;
+
+        float pitch = pitchDueToPosition + pitchDueToControlThrow;
         float yaw = 0f;
         float roll = 0f;
 
