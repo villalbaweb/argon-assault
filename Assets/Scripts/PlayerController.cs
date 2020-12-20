@@ -5,15 +5,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float controlSpeed = 1f;
-    [SerializeField] float xRange = 5f;
+    [SerializeField] float xRange = 13f;
+    [SerializeField] float yRange = 7f;
+
+    [SerializeField] float positionPitchFactor = -2f;
 
     // Update is called once per frame
     void Update()
     {
-        Move();
+        ProcessTranslation();
+        ProcessRotation();
     }
 
-    private void Move()
+    private void ProcessTranslation()
     {
         float xThrow = Input.GetAxis("Horizontal");
         float yThrow = Input.GetAxis("Vertical");
@@ -24,8 +28,17 @@ public class PlayerController : MonoBehaviour
 
         float yOffset = yThrow * controlSpeed * Time.deltaTime;
         float rawYPos = transform.localPosition.y + yOffset;
-        float clampedYPos = Mathf.Clamp(rawYPos, 0, xRange);
+        float clampedYPos = Mathf.Clamp(rawYPos, -yRange, yRange);
 
         transform.localPosition = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
+    }
+
+    private void ProcessRotation()
+    {
+        float pitch = transform.localPosition.y * positionPitchFactor;
+        float yaw = 0f;
+        float roll = 0f;
+
+        transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
     }
 }
