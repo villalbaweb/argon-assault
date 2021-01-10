@@ -232,6 +232,9 @@ MonoBehaviour:
   controlSpeed: 50
   xRange: 13
   yRange: 7
+  lasers:
+  - {fileID: 1638373329230175767}
+  - {fileID: 6833803065233679560}
   positionPitchFactor: -2
   controlPitchFactor: -15
   positionYawFactor: 2
@@ -421,6 +424,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 483465125759937967, guid: a66fb4690f7977245899dd83acf481e3, type: 3}
   m_PrefabInstance: {fileID: 185061132524015135}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &6833803065233679560 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6649551315597388503, guid: a66fb4690f7977245899dd83acf481e3, type: 3}
+  m_PrefabInstance: {fileID: 185061132524015135}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5403009399307695296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -481,5 +489,10 @@ PrefabInstance:
 --- !u!4 &5498548336910735727 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 483465125759937967, guid: a66fb4690f7977245899dd83acf481e3, type: 3}
+  m_PrefabInstance: {fileID: 5403009399307695296}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1638373329230175767 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6649551315597388503, guid: a66fb4690f7977245899dd83acf481e3, type: 3}
   m_PrefabInstance: {fileID: 5403009399307695296}
   m_PrefabAsset: {fileID: 0}
