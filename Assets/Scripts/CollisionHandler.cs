@@ -6,13 +6,18 @@ public class CollisionHandler : MonoBehaviour
 {
     // config
     [SerializeField] float loadDelay = 1f;
+    [SerializeField] ParticleSystem explosionParticleSystem = null;
 
     // cache
     PlayerController _playerController;
+    MeshRenderer _meshRenderer;
+    BoxCollider _boxCollider;
 
     private void Awake() 
     {
         _playerController = GetComponent<PlayerController>();
+        _meshRenderer = GetComponent<MeshRenderer>();
+        _boxCollider = GetComponent<BoxCollider>();
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -27,8 +32,16 @@ public class CollisionHandler : MonoBehaviour
 
     IEnumerator DieCoroutine()
     {
-        _playerController.SetIsAlive(false);
+        DisableComponentOnCrash();
+        explosionParticleSystem.Play();
         yield return new WaitForSeconds(loadDelay);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void DisableComponentOnCrash()
+    {
+        _boxCollider.enabled = false;
+        _meshRenderer.enabled = false;
+        _playerController.enabled = false;
     }
 }
