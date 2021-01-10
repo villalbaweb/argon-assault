@@ -24,15 +24,15 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Set the particle systems that will work as lasers")]
     [SerializeField] ParticleSystem[] lasers = null;
 
-
-
-
     float xThrow;
     float yThrow;
+    bool isAlive = true;
 
     // Update is called once per frame
     void Update()
     {
+        if(!isAlive) return;
+
         ProcessTranslation();
         ProcessRotation();
         ProcessFiring();
@@ -85,5 +85,10 @@ public class PlayerController : MonoBehaviour
             var emision = laser.emission;
             emision.enabled = isActive;
         }
+    }
+
+    public void SetIsAlive(bool newIsAliveValue)
+    {
+        isAlive = newIsAliveValue;
     }
 }
