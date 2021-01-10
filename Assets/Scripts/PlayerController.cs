@@ -2,17 +2,29 @@
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("General Setup Settings")]
+
+    [Header("Movement Setup Settings")]
+    [Tooltip("How fast ships moves based on players input")]
     [SerializeField] float controlSpeed = 1f;
+    [Tooltip("How fast can move along x axis")]
     [SerializeField] float xRange = 13f;
+    [Tooltip("How fast ship can move along y axis")]
     [SerializeField] float yRange = 7f;
-    [SerializeField] ParticleSystem[] lasers = null;
 
+    [Header("Screen position based tunning")]
     [SerializeField] float positionPitchFactor = -2f;
-    [SerializeField] float controlPitchFactor = -15f;
-
     [SerializeField] float positionYawFactor = 2f;
 
+    [Header("Player input based tunning")]
+    [SerializeField] float controlPitchFactor = -15f;
     [SerializeField] float controlRollFactor = -20f;
+
+    [Header("Laser particle system setup")]
+    [Tooltip("Set the particle systems that will work as lasers")]
+    [SerializeField] ParticleSystem[] lasers = null;
+
+
 
 
     float xThrow;
